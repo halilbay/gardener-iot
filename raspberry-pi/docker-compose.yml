@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mqtt-mosquitto:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+    restart: unless-stopped
+    networks: 
+          - proxy-redirect
+  node-red:
+    image: nodered/node-red
+    ports:
+      - 1880:1880
+    networks: 
+      - proxy-redirect
+networks: 
+  proxy-redirect:
+      name: proxy-redirect
